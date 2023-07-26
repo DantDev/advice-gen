@@ -29,7 +29,7 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   padding: 40px;
 }
 
@@ -44,12 +44,48 @@ body{
   text-align: center;
 }
 
+.divider-mobile{
+  display: none;
+}
+
 .advice-btn{
   position: absolute;
+  width: 65px;
+  height: 65px;
   top: 540px;
   cursor: pointer;
   background: var(--clr-neon-green);
-  padding: 20px;
   border: none;
+  padding-top: 5px;
   border-radius: 50%;
+}
+
+.advice-btn:hover{
+  box-shadow: 0em 0em 4em var(--clr-neon-green);
+}
+
+@media (max-width: 650px){
+  .container{
+    width: 350px;
+    height: 300px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    border-radius: 10px;
+  }
+
+  .advice-text{
+    font-size: 1.5em;
+  }
+
+  .divider-desktop{
+    display: none;
+  }
+  .divider-mobile{
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .advice-btn{
+    top: 370px;
+  }
 }
