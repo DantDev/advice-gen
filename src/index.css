@@ -25,6 +25,7 @@ body{
   height: 370px;
   background: var(--clr-dark-grayish-blue);
   margin-top: 200px;
+  margin-bottom: 200px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
