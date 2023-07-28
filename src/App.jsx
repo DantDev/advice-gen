@@ -1,31 +1,48 @@
-import React from "react"
+import React, { useState } from "react"
 import dividerDesk from "./assets/images/pattern-divider-desktop.svg"
 import dividerMob from "./assets/images/pattern-divider-mobile.svg"
 import diceIcon from "./assets/images/icon-dice.svg"
 
 function App() {
+  const [id, setId] = useState(1)
   const [advice,setAdvice] = React.useState([])
 
+  const updateQuote = () => {
+    setId(Math.ceil(Math.random() * (224-1)) + 1)
+  }
+
   const fetchAdvice = async () => {
-    const response = await fetch("https://api.adviceslip.com/advice")
-    const data = await response.json()
-    setAdvice({
-      id: data.slip.id,
-      advice: data.slip.advice
-    })
+    try {
+      const response = await 
+      fetch(`https://api.adviceslip.com/advice/${id}`)
+      const data = await response.json()
+      setAdvice(data.slip.advice)
+    } catch (err) {
+      const {type , text } = err.message
+      if (type === "error") {
+        alert(text)
+      }
+    }
   }
   
   React.useEffect(() => {
-    fetchAdvice()
-  }, []);
+    const controller = new AbortController()
+
+    if (!controller.signal.aborted) fetchAdvice()
+
+    return () => {
+      controller.abort()
+    }
+
+  }, [id]);
 
   return (
     <div className='container'>
-      <p className="advice-id">ADVICE #{advice.id}</p>
-      <h1 className="advice-text">"{advice.advice}"</h1>
+      <p className="advice-id">ADVICE #{id}</p>
+      <h1 className="advice-text">"{advice}"</h1>
       <img className="divider-desktop" src={dividerDesk} />
       <img className="divider-mobile" src={dividerMob} />
-      <button onClick={fetchAdvice} className="advice-btn"><img src={diceIcon}/></button>
+      <button onClick={updateQuote} className="advice-btn"><img src={diceIcon}/></button>
     </div>
   )
 }
