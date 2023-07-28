@@ -28,7 +28,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Solution URL](https://www.frontendmentor.io/solutions/advice-generetor-made-w-api-async-reactjs-vite-css-variables-VGvtnEG8pk)
 - Live Site URL: [Live site](https://hilarious-torte-de4f17.netlify.app/)
 - Site Repositorie: [Site Repositorie](https://github.com/DantDev/advice-gen)
 
